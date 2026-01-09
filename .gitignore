@@ -19,17 +19,8 @@ logs/
 # Ignore the Python cache
 __pycache__/
 
-# Ignore the Django settings
-config/settings.py
+# Django settings, URLs, WSGI, ASGI are now tracked
 
-# Ignore the Django URLs
-config/urls.py
-
-# Ignore the Django WSGI
-config/wsgi.py
-
-# Ignore the Django ASGI
-config/asgi.py
 
 # Ignore the Django manage.py
 manage.py

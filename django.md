@@ -1,65 +1,39 @@
-# Aide-mémoire Django
 
-## 📋 Checklist d'Étapes
+### 1. Initialisation du projet
 
-- [ ] Initialiser un projet django & Git
-- [ ] Installer / configurer django
-- [ ] Définir les models
-- [ ] Migrer la base de données
-- [ ] Lier à l'admin -> saisie des données
-- [ ] Créer des vues & URLs
-- [ ] Créer des templates
-- [ ] Gérer les fichiers statiques
-- [ ] Personnaliser l'admin
+- Installation de Django : `pip install django`
+- Création du projet : `python -m django startproject config .`
 
-## ⚙️ Configuration & Commandes
+### 2. Configuration Docker 🐳
 
-### 1. Installation de l'environnement
+- Création du `Dockerfile` (Python 3.12-slim)
+- Création du `docker-compose.yml` (Services `web` et `db` PostgreSQL)
+- Création du `.env` pour les variables d'environnement (DB, User, Password)
+- Mise à jour de `.dockerignore`
 
-```bash
-python -m venv venv
+### 3. Git & Versioning
 
-# Windows (CMD/PowerShell)
-venv\Scripts\activate
+- Initialisation du dépôt
+- Création de la branche `mohamed`
+- Ajout du remote : `https://github.com/ealmvin/patrimoineSportif.git`
+- Push du code
 
-# Bash (Git Bash)
-source venv/Scripts/activate
-```
+### 4. Création des Modèles
 
-### 2. Initialisation du projet
+- Analyse du fichier `sites-sportifs-emblematiques.json`
+- Création des modèles dans `patrimoine_sportif/models.py` :
+  - `SiteOlympique`
+  - `Typologie`
+  - `Denomination`
+  - `DateReference`
+  - `Site` (Model principal avec relations)
 
-```bash
-pip install django
-django-admin startproject config .  # crée le projet django (dans le dossier courant)
-```
+### 5. Base de données & Migrations
 
-### 3. Commandes de gestion courantes
-
-```bash
-python manage.py migrate          # crée/met à jour la base de données
-python manage.py createsuperuser  # crée un superuser (admin)
-python manage.py runserver        # lance le serveur de développement
-```
-### 4. Création d'une app 
-
-```bash
-
-# arreter le serveur si il tourne
-
-
-# creer une app
-python manage.py startapp app_name
-
-# ajouter l'app au projet
-config/settings.py
-
-# ajouter la vue
-www/views.py 
-
-# ajouter l'url
-config/urls.py
-
-# ajouter le template
-www/templates/www/index.html
-
-```
+- Configuration de `config/settings.py` pour PostgreSQL (via `os.environ` et `.env`)
+- Ajout de `psycopg2-binary` dans `requirements.txt`
+- Exécution des migrations via Docker :
+  ```bash
+  docker-compose exec web python manage.py makemigrations
+  docker-compose exec web python manage.py migrate
+  ```
