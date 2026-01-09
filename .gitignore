@@ -1,0 +1,35 @@
+# Ignore the virtual environment
+venv/
+
+# Ignore the database
+.db
+
+# Ignore the static files
+static/
+
+# Ignore the media files
+media/
+
+# Ignore the logs
+logs/
+
+# Ignore the IDE settings
+.idea/
+
+# Ignore the Python cache
+__pycache__/
+
+# Ignore the Django settings
+config/settings.py
+
+# Ignore the Django URLs
+config/urls.py
+
+# Ignore the Django WSGI
+config/wsgi.py
+
+# Ignore the Django ASGI
+config/asgi.py
+
+# Ignore the Django manage.py
+manage.py
